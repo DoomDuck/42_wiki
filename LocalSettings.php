@@ -153,7 +153,6 @@ wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'Math' );
 wfLoadExtension( 'Nuke' );
-wfLoadExtension( 'OATHAuth' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Poem' );
 wfLoadExtension( 'ReplaceText' );
@@ -162,6 +161,7 @@ wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
+wfLoadExtension( 'OAuth' );
 
 
 # End of automatically generated settings.
