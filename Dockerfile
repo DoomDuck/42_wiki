@@ -1,15 +1,14 @@
 FROM mediawiki:1.42
 
-COPY OAuth-extension.tgz ./extensions/
+COPY ./extensions ./extensions
 
-RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/OAuth-extension.tgz"]
+# Extract pluggins 
+# TODO: Make a script to install plugins
+RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/OAuth.tgz"]
+RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/WSOAuth.tgz"]
+RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/PluggableAuth.tgz"]
+RUN rm ./extensions/*.tgz
 
-RUN ["rm", "./extensions/OAuth-extension.tgz"]
-#
-# COPY LocalSettings.php .
-#
-# RUN ["php", "maintenance/run.php", "install"]
-
+# Startup script
 COPY start.sh .
-
 CMD ["./start.sh"]
