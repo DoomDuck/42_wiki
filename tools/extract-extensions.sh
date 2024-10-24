@@ -1,6 +1,8 @@
 #!/bin/bash
 set -o
 
+echo extracting extensions
+
 archives=$(find extensions -name "*.tgz");
 
 for archive in $archives; do
@@ -8,4 +10,4 @@ for archive in $archives; do
     tar -C "./extensions" -xzf "$archive";
 done
 
-rm -r echo $archives
+rm -r $archives

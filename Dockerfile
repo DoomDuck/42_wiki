@@ -4,7 +4,7 @@ COPY ./extensions ./extensions
 COPY ./tools ./tools
 
 # Extract extensions 
-CMD ["./tools/extract-extensions.sh"]
+RUN ["./tools/extract-extensions.sh"]
 
 # Startup script
 CMD ["./tools/start.sh"]
