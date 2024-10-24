@@ -1,14 +1,10 @@
 FROM mediawiki:1.42
 
 COPY ./extensions ./extensions
+COPY ./tools ./tools
 
-# Extract pluggins 
-# TODO: Make a script to install plugins
-RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/OAuth.tgz"]
-RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/WSOAuth.tgz"]
-RUN ["tar", "-C", "./extensions", "-xzf", "./extensions/PluggableAuth.tgz"]
-RUN rm ./extensions/*.tgz
+# Extract extensions 
+CMD ["./tools/extract-extensions.sh"]
 
 # Startup script
-COPY start.sh .
-CMD ["./start.sh"]
+CMD ["./tools/start.sh"]
