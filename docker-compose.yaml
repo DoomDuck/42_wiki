@@ -13,8 +13,8 @@ services:
     links:
       - database
     depends_on:
-      - database
-      # TODO: add heath check to remove sleep from script
+      database:
+        condition: service_healthy
     volumes:
       - images:/var/www/html/images
       # After initial setup, download LocalSettings.php to the same directory as
@@ -31,6 +31,12 @@ services:
   database:
     image: mariadb
     restart: always
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
     env_file:
       - .database-env
       - .mysql-env

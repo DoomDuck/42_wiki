@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Wait for database to wakeup
-sleep 5s
 
 echo "Starting installation"
 
