@@ -6,5 +6,5 @@ if [ ! -f "./.env" ]; then
 fi
 
 docker compose down;
-docker volume rm 42_wiki_db;
+docker volume rm `docker volume ls | grep wiki`
 docker compose --env-file .env/database-env up --build;
